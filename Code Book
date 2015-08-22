@@ -43,7 +43,7 @@ finalData.txt contains 36 rows and 19 columns of summarized data. The column nam
     The actual subjects, identified by number, participating in the study:  1 - 30
       
  The remaining columns contain the mean of the value described in the column name, calculated for each "Observation":
- 
+ Column Name                        Units
 "time_BodyAccMagnitude_mean"        in standard Gravity Units, 'g'
 "time_BodyAccMagnitude_stdDev"      in standard Gravity Units, 'g'
 "time_GravityAccMagnitude_mean"     in standard Gravity Units, 'g'
