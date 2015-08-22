@@ -26,7 +26,8 @@ This vector is then used to create a data frame with the activity, subject and m
 The activity name is added to this data set using merge() and the activity data frame.
 
 In order to clean up the column names, another list of column names is produced using colnames()
-This list of names is updated removing "()", changing "std" to "_stdDev", changing "-mean" to "_mean", changing the leading "t" to "time_" and the leading "f" to "freq_".  The multiple occurances of "Body" were changed to just one "Body" and the abbreviation, "Mag" was changed to "Magnitude" .  The abbreviation "Acc" was left for two reasons. I felt "Acc" is more like assumed to be "Acceleration" than "Mag" is assumed to be "Magnitude" and the column name is already pretty long :-).
+This list of names is updated removing "()", changing "std" to "_stdDev", changing "-mean" to "_mean", changing the leading "t" to "time_" and the leading "f" to "freq_".  The multiple occurances of "Body" were changed to just one "Body" and the abbreviation, "Mag" was changed to "Magnitude" .  The abbreviation "Acc" was left because the column name is already pretty long :-).
+
 Also, I added the underscores to the "freq", "time",  "mean", and "stdDev" portions because it helps, I feel, in being able to discern between the various measurements.
 
 The requirements of the script, for which it was written, ask for the means of each activity and each subject calculated for each variable and returned as a text file with row.name = FALSE.
@@ -42,23 +43,24 @@ finalData.txt contains 36 rows and 19 columns of summarized data. The column nam
     The actual subjects, identified by number, participating in the study:  1 - 30
       
  The remaining columns contain the mean of the value described in the column name, calculated for each "Observation":
-"time_BodyAccMagnitude_mean"  
-"time_BodyAccMagnitude_stdDev" 
-"time_GravityAccMagnitude_mean"  
-"time_GravityAccMagnitude_stdDev"
-"time_BodyAccJerkMagnitude_mean" 
-"time_BodyAccJerkMagnitude_stdDev"
-"time_BodyGyroMagnitude_mean"      
-"time_BodyGyroMagnitude_stdDev"
-"time_BodyGyroJerkMagnitude_mean"  
-"time_BodyGyroJerkMagnitude_stdDev"
-"freq_BodyAccMagnitude_mean"       
-"freq_BodyAccMagnitude_stdDev"
-"freq_BodyAccJerkMagnitude_mean"   
-"freq_BodyAccJerkMagnitude_stdDev"
-"freq_BodyGyroMagnitude_mean"      
-"freq_BodyGyroMagnitude_stdDev"
-"freq_BodyGyroJerkMagnitude_mean"  
-"freq_BodyGyroJerkMagnitude_stdDev"
+ 
+"time_BodyAccMagnitude_mean"        in standard Gravity Units, 'g'
+"time_BodyAccMagnitude_stdDev"      in standard Gravity Units, 'g'
+"time_GravityAccMagnitude_mean"     in standard Gravity Units, 'g'
+"time_GravityAccMagnitude_stdDev"   in standard Gravity Units, 'g'
+"time_BodyAccJerkMagnitude_mean"    in standard Gravity Units, 'g'
+"time_BodyAccJerkMagnitude_stdDev"  in standard Gravity Units, 'g'
+"time_BodyGyroMagnitude_mean"       in radians/second
+"time_BodyGyroMagnitude_stdDev"     in radians/second
+"time_BodyGyroJerkMagnitude_mean"   in radians/second
+"time_BodyGyroJerkMagnitude_stdDev" in radians/second
+"freq_BodyAccMagnitude_mean"        in standard Gravity Units, 'g'
+"freq_BodyAccMagnitude_stdDev"      in standard Gravity Units, 'g'
+"freq_BodyAccJerkMagnitude_mean"    in standard Gravity Units, 'g'
+"freq_BodyAccJerkMagnitude_stdDev"  in standard Gravity Units, 'g'
+"freq_BodyGyroMagnitude_mean"       in radians/second
+"freq_BodyGyroMagnitude_stdDev"     in radians/second
+"freq_BodyGyroJerkMagnitude_mean"   in radians/second
+"freq_BodyGyroJerkMagnitude_stdDev" in radians/second
     
     
