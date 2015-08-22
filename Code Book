@@ -1,0 +1,33 @@
+This Code book refers to the output, finalData.txt, generated after running the run_analysis.R script, included in this repo.
+
+finalData.txt is the summarization of data obtained from the, "Human Activity Recognition database which was built from the recordings of 30 subjects performing activities of daily living (ADL) while carrying a waist-mounted smartphone with embedded inertial sensors." (http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones) More detailed information can be found by following the link.
+
+The data set used to produce finalData.txt was a subset of the above data and only included the mean and standard deviation columns from the tests conducted. finalData.txt contains means calculated for the various activities and subjects tested in the original dataset. The details of the calculations and manipulations can be found in the Readme file in this repo.
+
+The finalData.txt contains 36 rows and 19 columns of summarized data. The column names and contents are listed below:
+
+"Observations": Names of the source of the tested values:
+    Activities performed by the subjects:   LAYING, SITTING, STANDING, WALKING, WALKING_DOWNSTAIRS, WALKING_UPSTAIRS
+    The actual subjects, identified by number, participating in the study:  1 - 30
+      
+ The remaining columns contain the mean of the value described in the column name, calculated for each "Observation":
+"time_BodyAccMagnitude_mean"  
+"time_BodyAccMagnitude_stdDev" 
+"time_GravityAccMagnitude_mean"  
+"time_GravityAccMagnitude_stdDev"
+"time_BodyAccJerkMagnitude_mean" 
+"time_BodyAccJerkMagnitude_stdDev"
+"time_BodyGyroMagnitude_mean"      
+"time_BodyGyroMagnitude_stdDev"
+"time_BodyGyroJerkMagnitude_mean"  
+"time_BodyGyroJerkMagnitude_stdDev"
+"freq_BodyAccMagnitude_mean"       
+"freq_BodyAccMagnitude_stdDev"
+"freq_BodyAccJerkMagnitude_mean"   
+"freq_BodyAccJerkMagnitude_stdDev"
+"freq_BodyGyroMagnitude_mean"      
+"freq_BodyGyroMagnitude_stdDev"
+"freq_BodyGyroJerkMagnitude_mean"  
+"freq_BodyGyroJerkMagnitude_stdDev"
+    
+    
