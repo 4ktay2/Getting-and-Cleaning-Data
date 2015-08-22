@@ -1,10 +1,41 @@
 This Code book refers to the output, finalData.txt, generated after running the run_analysis.R script, included in this repo.
 
 finalData.txt is the summarization of data obtained from the, "Human Activity Recognition database which was built from the recordings of 30 subjects performing activities of daily living (ADL) while carrying a waist-mounted smartphone with embedded inertial sensors." (http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones) More detailed information can be found by following the link.
+The following is a description of the data contained in the finalData.txt file as well as the functions used to create it.  
 
-The data set used to produce finalData.txt was a subset of the above data and only included the mean and standard deviation columns from the tests conducted. finalData.txt contains means calculated for the various activities and subjects tested in the original dataset. The details of the calculations and manipulations can be found in the Readme file in this repo.
+The data was downloaded here: https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip and unzipped into the working directory.
+These files were imported into r using read.table
+    features.txt            into "features" data frame
+    activity_labels.txt     into "activity" data frame
+    subject_train.txt       into "subjecttrain" data frame
+    train/x_train.txt       into "xtrain" data frame
+    train/y_train.txt       into "ytrain" data frame
+    test/subject_test.txt   into "subjecttest" data frame
+    test/X_test.txt         into "xtest" data frame
+    test/Y_test.txt         into "ytest" data frame
+The column names of the resulting data frames were changed using colnames() and the features data frame as well as some manual additions.
 
-The finalData.txt contains 36 rows and 19 columns of summarized data. The column names and contents are listed below:
+The "train" data frames ( xtrain, ytrain and subjecttrain) are then joined using cbind().  The same is done for the "test" data frames: xtest, xtrain, subjecttest.
+
+Using rbind(), the train and test data frames are joined into one data frame.
+
+In order to filter for the columns with mean and standard deviation values and the activity and subject columns, a list of column names is created using colnames() and used to create a logical vector using grepl() and filtering for "activity..",  "subject..", "-mean.." , "-std..", and excluding "-meanFreq..", "mean..-", "-std()..-" in the column names.
+
+This vector is then used to create a data frame with the activity, subject and mean/standard deviation values.
+
+The activity name is added to this data set using merge() and the activity data frame.
+
+In order to clean up the column names, another list of column names is produced using colnames()
+This list of names is updated removing "()", changing "std" to "_stdDev", changing "-mean" to "_mean", changing the leading "t" to "time_" and the leading "f" to "freq_".  The multiple occurances of "Body" were changed to just one "Body" and the abbreviation, "Mag" was changed to "Magnitude" .  The abbreviation "Acc" was left for two reasons. I felt "Acc" is more like assumed to be "Acceleration" than "Mag" is assumed to be "Magnitude" and the column name is already pretty long :-).
+Also, I added the underscores to the "freq", "time",  "mean", and "stdDev" portions because it helps, I feel, in being able to discern between the various measurements.
+
+The requirements of the script, for which it was written, ask for the means of each activity and each subject calculated for each variable and returned as a text file with row.name = FALSE.
+
+To accomplish this, I calculated the means for each activity and subject separately into their own data frame with the aggregate funtion, then changed the column name of the activity/subject to "Observations".   I used as.factor() to change the subject_id's in the "Observations" column of the subject means data frame so it matched the data type in the "Observations" column of the activity means data frame.  I then joined them together with rbind() into the final data set.
+
+This data set is writen to a file, "finalData.txt", with write.table() and the argument, row.name = FALSE.
+
+finalData.txt contains 36 rows and 19 columns of summarized data. The column names and contents are listed below:
 
 "Observations": Names of the source of the tested values:
     Activities performed by the subjects:   LAYING, SITTING, STANDING, WALKING, WALKING_DOWNSTAIRS, WALKING_UPSTAIRS
